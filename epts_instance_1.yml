@@ -8,7 +8,7 @@ applications:
     value-field: humidity
     tag-fields: latitude, longitude
   - name: BatteryLevel
-    value-field: level
+    value-field: batteryLevel
     tag-fields: latitude, longitude
   - name: Pressure
     value-field: pressure
