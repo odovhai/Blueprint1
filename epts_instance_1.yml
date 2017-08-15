@@ -3,37 +3,26 @@ applications:
   time-series:
   - name: Temperature
     value-field: temperature
-    tag-fields: latitude, longitude
+    tag-fields: temperature
   - name: Humidity
     value-field: humidity
-    tag-fields: latitude, longitude
+    tag-fields: humidity
   - name: BatteryLevel
     value-field: batteryLevel
-    tag-fields: latitude, longitude
+    tag-fields: batteryLevel
   - name: Pressure
     value-field: pressure
-    tag-fields: latitude, longitude
+    tag-fields: pressure
   versions:
   - name: environment-ver-1
     number: 1
     timestamp:
-      path: "$.t"
+      path: "$.ts"
       format: iso8601
       fallback-strategy: fail
     preprocessing:
       extraction:
         extract-all: true
-        fields:
-        - name: temperature
-          path: "$.tmp"
-        - name: latitude
-          path: "$.lat"
-        - name: longitude
-          path: "$.lon"
-        - name: pressure
-          path: "$.press"
-        - name: humidity
-          path: "$.hum"
 dcx:
  service:
    instance:
