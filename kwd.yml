@@ -46,35 +46,7 @@ dashboards:
     widgets:
       -
         height: 500
-        percentWidth: 33.33
-        config:
-          title: Revolution
-          displayTitle: true
-          source: gauge
-          baseUrl: api/v1
-          dataPath: value
-          displayPostfix: rpm
-          displayScale: 0
-          emptyQueriesMax: 3
-          ranges:
-            highCritical: 3100
-            highWarning: 3050
-            lowCritical: 2850
-            lowWarning: 2950
-            max: 3500
-            min: 0
-            step: 500
-          service: API_EPTS
-          timeSegment: 5
-          timeSeriesName: Revolutions
-          timeSeriesParams:
-            - itemJsonPath: dashboardRouteParams.id
-              name: epId
-          type: RadialModernBorder270
-          updateInterval: 0.5
-      -
-        height: 500
-        percentWidth: 33.33
+        percentWidth: 25
         config:
           title: Temperature
           displayTitle: true
@@ -88,46 +60,101 @@ dashboards:
               name: epId
           displayPostfix: °C
           displayScale: 1
-          emptyQueriesMax: 0
+          emptyQueriesMax: 3
           ranges:
-            highCritical: 120
-            highWarning: 115
-            lowCritical: 0
-            lowWarning: 0
-            max: 200
+            highCritical: 40
+            highWarning: 30
+            lowCritical: 7
+            lowWarning: 15
+            max: 50
             min: 0
             step: 20
           timeSegment: 5
-          type: HorizontalArrow
+          type: VerticalArrow
           updateInterval: 0.5
       -
         height: 500
-        percentWidth: 33.33
+        percentWidth: 25
         config:
-          title: Oil
+          title: Humidity
+          displayTitle: true
+          source: gauge
+          baseUrl: api/v1
+          dataPath: value
+          displayPostfix: %
+          displayScale: 1
+          emptyQueriesMax: 3
+          ranges:
+            highCritical: 90
+            highWarning: 65
+            lowCritical: 10
+            lowWarning: 35
+            max: 100
+            min: 0
+            step: 5
+          service: API_EPTS
+          timeSegment: 5
+          timeSeriesName: Humidity
+          timeSeriesParams:
+            - itemJsonPath: dashboardRouteParams.id
+              name: epId
+          type: VerticalArrow
+          updateInterval: 0.5
+      -
+        height: 500
+        percentWidth: 25
+        config:
+          title: "Battery Level"
+          displayTitle: true
+          source: gauge
+          baseUrl: api/v1
+          dataPath: value
+          displayPostfix: %
+          displayScale: 2
+          emptyQueriesMax: 3
+          ranges:
+            lowCritical: 5
+            lowWarning: 20
+            max: 100
+            min: 0
+            step: 10
+          service: API_EPTS
+          timeSegment: 5
+          timeSeriesName: BatteryLevel
+          timeSeriesParams:
+            -
+              itemJsonPath: dashboardRouteParams.id
+              name: epId
+          type: VerticalArrow
+          updateInterval: 0.5
+      -
+        height: 500
+        percentWidth: 25
+        config:
+          title: Pressure
           displayTitle: true
           source: gauge
           baseUrl: api/v1
           dataPath: value
           displayPostfix: bar
-          displayScale: 2
+          displayScale: 3
           emptyQueriesMax: 3
           ranges:
-            highCritical: 6.3
-            highWarning: 6.1
-            lowCritical: 2
-            lowWarning: 4
-            max: 8
-            min: 0
-            step: 1
+            highCritical: 1.06
+            highWarning: 1.05
+            lowCritical: 0.9
+            lowWarning: 0.95
+            max: 1.1
+            min: 0.85
+            step: 0.05
           service: API_EPTS
           timeSegment: 5
-          timeSeriesName: Oil
+          timeSeriesName: Pressure
           timeSeriesParams:
             -
               itemJsonPath: dashboardRouteParams.id
               name: epId
-          type: RadialModern180Left
+          type: VerticalArrow
           updateInterval: 0.5
       -
         height: 500
@@ -165,45 +192,6 @@ dashboards:
           limit: 1000
           service: API_EPTS
           timeSeriesName: Oil
-      -
-        height: 500
-        percentWidth: 40
-        config:
-          title: Metadata
-          source: metadata
-          service: API_EPR
-          baseUrl: api/v1
-          allFields: true
-          allEditable: true
-          fields:
-            - path: createdDate
-              name: createdDate
-              displayName: Created at
-              isEditable: false
-              dataType: string
-            - path: endpointId
-              name: endpointId
-              displayName: Endpoint ID
-              isEditable: false
-              dataType: string            
-            - path: metadata
-              section: metadata
-              displayName: Rule name
-              name: value
-              isEditable: true
-              dataType: string
-            - path: metadata
-              section: metadata
-              displayName: Operator
-              name: operator
-              isEditable: true
-              dataType: string
-            - path: metadata
-              section: metadata
-              displayName: Threshold
-              name: threshold
-              isEditable: true
-              dataType: string            
 info:
   logo: "http://some_path"
   theme: night
