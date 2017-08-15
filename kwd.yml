@@ -13,27 +13,27 @@ dashboards:
       selected: router/orange.svg
     widgets:
       -
-        source: EPList
         height: 500
         percentWidth: 100
         config:
           title: Devices
-          applicationName: environment-ver-1
+          displayTitle: true
+          source: EPList
+          service: API_EPR
           baseUrl: api/v1
+          applicationName: environment-ver-1
+          metadata: metadata
           columns:
             - display: ID
               path: endpointId
             - display: Created
               path: createdDate
-          displayTitle: true
           itemLink:
             parameters:
               - itemJsonPath: "widgetConfig.columns[0].display"
                 name: endpoint_id
                 type: path
             path: "/environment/{endpoint_id}"
-          service: API_EPR
-          metadata: metadata
   -
     title: Environment sensor
     displayTitle: true
