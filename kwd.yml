@@ -58,7 +58,7 @@ dashboards:
           timeSeriesParams:
             - itemJsonPath: dashboardRouteParams.id
               name: epId
-          displayPostfix: °C
+          displayPostfix: "°C"
           displayScale: 1
           emptyQueriesMax: 3
           ranges:
@@ -81,7 +81,7 @@ dashboards:
           source: gauge
           baseUrl: api/v1
           dataPath: value
-          displayPostfix: %
+          displayPostfix: "%"
           displayScale: 1
           emptyQueriesMax: 3
           ranges:
@@ -109,7 +109,7 @@ dashboards:
           source: gauge
           baseUrl: api/v1
           dataPath: value
-          displayPostfix: %
+          displayPostfix: "%"
           displayScale: 2
           emptyQueriesMax: 3
           ranges:
