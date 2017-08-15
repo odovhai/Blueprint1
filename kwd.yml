@@ -2,8 +2,7 @@
 common:
   autoUpdate: 3000
 dashboards:
-  -
-    description: "Engine description"
+  - description: "Engine description"
     displayDescription: true
     displayTitle: true
     icons:
@@ -14,26 +13,19 @@ dashboards:
     path: /engine
     title: Engine
     widgets:
-      -
-        config:
+      - config:
           applicationName: engine-ver-1
           baseUrl: api/v1
           columns:
-            -
-              display: ID
+            - display: ID
               path: endpointId
-            -
-              display: Created
+            - display: Created
               path: createdDate
           displayTitle: true
-          generate: true
-          generateTimeout: 1000
-          generateTitle: "Generate new"
           height: 500
           itemLink:
             parameters:
-              -
-                itemJsonPath: "widgetConfig.columns[0].display"
+              - itemJsonPath: "widgetConfig.columns[0].display"
                 name: engine_id
                 type: path
             path: "/engine/{engine_id}"
@@ -45,8 +37,7 @@ dashboards:
         height: 500
         percentWidth: 100
         source: EPList
-  -
-    displayDescription: true
+  - displayDescription: true
     displayTitle: true
     icons:
       default: router/grey.svg
@@ -56,8 +47,8 @@ dashboards:
     path: "/engine/:id"
     title: Engine
     widgets:
-      -
-        config:
+      - config:
+          source: gauge
           baseUrl: api/v1
           dataPath: value
           displayPostfix: rpm
@@ -74,20 +65,17 @@ dashboards:
             min: 0
             step: 500
           service: API_EPTS
-          source: gauge
           timeSegment: 5
           timeSeriesName: Revolutions
           timeSeriesParams:
-            -
-              itemJsonPath: dashboardRouteParams.id
+            - itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Revolution
           type: RadialModernBorder270
           updateInterval: 0.5
         height: 500
         percentWidth: 33.33
-      -
-        config:
+      - config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: °C
@@ -108,16 +96,14 @@ dashboards:
           timeSegment: 5
           timeSeriesName: Temperature
           timeSeriesParams:
-            -
-              itemJsonPath: dashboardRouteParams.id
+            - itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Temperature
           type: HorizontalArrow
           updateInterval: 0.5
         height: 500
         percentWidth: 33.33
-      -
-        config:
+      - config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: bar
