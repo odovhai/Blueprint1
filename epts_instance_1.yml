@@ -34,5 +34,3 @@ applications:
           path: "$.press"
         - name: humidity
           path: "$.hum"
-
-
