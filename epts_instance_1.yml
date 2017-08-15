@@ -34,3 +34,7 @@ applications:
           path: "$.press"
         - name: humidity
           path: "$.hum"
+dcx:
+ service:
+   instance:
+     name: dcx_instance_1         
