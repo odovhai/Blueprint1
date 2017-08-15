@@ -2,19 +2,23 @@
 common:
   autoUpdate: 3000
 dashboards:
-  - description: "Engine description"
-    displayDescription: true
+  - 
+    title: Environment
     displayTitle: true
+    path: /environment
+    isTopLevel: true
     icons:
       default: router/grey.svg
       hover: router/hovered.svg
       selected: router/orange.svg
-    isTopLevel: true
-    path: /engine
-    title: Engine
     widgets:
       - config:
-          applicationName: engine-ver-1
+        source: EPList
+        height: 500
+        percentWidth: 100
+          title: Devices
+          source: EPList
+          applicationName: environment-ver-1
           baseUrl: api/v1
           columns:
             - display: ID
@@ -26,26 +30,22 @@ dashboards:
           itemLink:
             parameters:
               - itemJsonPath: "widgetConfig.columns[0].display"
-                name: engine_id
+                name: endpoint_id
                 type: path
-            path: "/engine/{engine_id}"
+            path: "/environment/{endpoint_id}"
           metadata: metadata
           name: sensorDevices.json
           service: API_EPR
-          source: EPList
-          title: Devices
-        height: 500
-        percentWidth: 100
-        source: EPList
-  - displayDescription: true
+  - 
+    title: Environment sensor
+    displayDescription: true
     displayTitle: true
     icons:
       default: router/grey.svg
       hover: router/hovered.svg
       selected: router/orange.svg
     isTopLevel: false
-    path: "/engine/:id"
-    title: Engine
+    path: "/environment/:id"
     widgets:
       - config:
           source: gauge
