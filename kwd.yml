@@ -12,12 +12,12 @@ dashboards:
       hover: router/hovered.svg
       selected: router/orange.svg
     widgets:
-      - config:
+      -
         source: EPList
         height: 500
         percentWidth: 100
+        config:
           title: Devices
-          source: EPList
           applicationName: environment-ver-1
           baseUrl: api/v1
           columns:
@@ -26,36 +26,36 @@ dashboards:
             - display: Created
               path: createdDate
           displayTitle: true
-          height: 500
           itemLink:
             parameters:
               - itemJsonPath: "widgetConfig.columns[0].display"
                 name: endpoint_id
                 type: path
             path: "/environment/{endpoint_id}"
-          metadata: metadata
-          name: sensorDevices.json
           service: API_EPR
-  - 
+          metadata: metadata
+  -
     title: Environment sensor
-    displayDescription: true
     displayTitle: true
+    path: "/environment/:id"
+    isTopLevel: false
     icons:
       default: router/grey.svg
       hover: router/hovered.svg
       selected: router/orange.svg
-    isTopLevel: false
-    path: "/environment/:id"
     widgets:
-      - config:
+      -
+        height: 500
+        percentWidth: 33.33
+        config:
+          title: Revolution
+          displayTitle: true
           source: gauge
           baseUrl: api/v1
           dataPath: value
           displayPostfix: rpm
           displayScale: 0
-          displayTitle: true
           emptyQueriesMax: 3
-          name: sensorDetailsGaugeRadialModern270.json
           ranges:
             highCritical: 3100
             highWarning: 3050
@@ -70,19 +70,25 @@ dashboards:
           timeSeriesParams:
             - itemJsonPath: dashboardRouteParams.id
               name: epId
-          title: Revolution
           type: RadialModernBorder270
           updateInterval: 0.5
+      -
         height: 500
         percentWidth: 33.33
-      - config:
-          baseUrl: api/v1
+        config:
+          title: Temperature
+          displayTitle: true
+          source: gauge
+          service: API_EPTS
+          timeSeriesName: Temperature
           dataPath: value
+          baseUrl: api/v1
+          timeSeriesParams:
+            - itemJsonPath: dashboardRouteParams.id
+              name: epId
           displayPostfix: °C
           displayScale: 1
-          displayTitle: true
           emptyQueriesMax: 0
-          name: sensorDetailsGaugeHorizontalArrow.json
           ranges:
             highCritical: 120
             highWarning: 115
@@ -91,26 +97,21 @@ dashboards:
             max: 200
             min: 0
             step: 20
-          service: API_EPTS
-          source: gauge
           timeSegment: 5
-          timeSeriesName: Temperature
-          timeSeriesParams:
-            - itemJsonPath: dashboardRouteParams.id
-              name: epId
-          title: Temperature
           type: HorizontalArrow
           updateInterval: 0.5
+      -
         height: 500
         percentWidth: 33.33
-      - config:
+        config:
+          title: Oil
+          displayTitle: true
+          source: gauge
           baseUrl: api/v1
           dataPath: value
           displayPostfix: bar
           displayScale: 2
-          displayTitle: true
           emptyQueriesMax: 3
-          name: sensorDetailsGaugeRadialModern180Left.json
           ranges:
             highCritical: 6.3
             highWarning: 6.1
@@ -120,73 +121,58 @@ dashboards:
             min: 0
             step: 1
           service: API_EPTS
-          source: gauge
           timeSegment: 5
           timeSeriesName: Oil
           timeSeriesParams:
             -
               itemJsonPath: dashboardRouteParams.id
               name: epId
-          title: Oil
           type: RadialModern180Left
           updateInterval: 0.5
-        height: 500
-        percentWidth: 33.33
       -
+        height: 500
+        percentWidth: 100
         config:
-          baseUrl: api/v1
-          dataPath: value
-          displayTitle: true
-          height: 500
-          limit: 1000
-          name: sensorDetailsNumericTemperature.json
-          service: API_EPTS
-          source: numericChart
-          timeSeriesName: Revolutions
           title: "Revolutions, rpm"
-        height: 500
-        percentWidth: 100
-        source: numericChart
-      -
-        config:
+          displayTitle: true
+          source: numericChart
           baseUrl: api/v1
           dataPath: value
-          displayTitle: true
-          height: 500
           limit: 1000
-          name: sensorDetailsNumericTemperature.json
           service: API_EPTS
-          source: numericChart
-          timeSeriesName: Temperature
+          timeSeriesName: Revolutions
+      -
+        height: 500
+        percentWidth: 100
+        config:
           title: "Temperature, °C"
-        height: 500
-        percentWidth: 100
-        source: numericChart
-      -
-        config:
+          displayTitle: true
+          source: numericChart
           baseUrl: api/v1
           dataPath: value
-          displayTitle: true
-          height: 500
           limit: 1000
-          name: sensorDetailsNumericTemperature.json
           service: API_EPTS
-          source: numericChart
-          timeSeriesName: Oil
-          title: "Oil, bar"
+          timeSeriesName: Temperature
+      -
         height: 500
         percentWidth: 100
-        source: numericChart
-      - height: 500
+        config:
+          title: "Oil, bar"
+          displayTitle: true
+          source: numericChart
+          baseUrl: api/v1
+          dataPath: value
+          limit: 1000
+          service: API_EPTS
+          timeSeriesName: Oil
+      -
+        height: 500
         percentWidth: 40
-        source: metadata
         config:
           title: Metadata
           source: metadata
           service: API_EPR
           baseUrl: api/v1
-          height: 500
-          name: routerDetailsMetadata.json
           allFields: true
           allEditable: true
           fields:
