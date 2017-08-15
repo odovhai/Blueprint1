@@ -1,0 +1,12 @@
+---
+window:
+  API_CONFIG: 
+    API_URL: http://localhost:30900/api/v1
+    API_ENDPOINTS: http://34.207.160.1909:30730/api/v1
+    API_URL_SENTINEL: http://localhost:8081/api/v1
+    ANALYTYC_USER_ID: UA-84827241-1
+    API_EPCDP: http://10.2.1.196:30760
+    API_EPR: http://10.2.3.216:30750
+    API_CRED: http://10.2.3.216:30730
+    API_EPTS: http://10.2.3.216:30740
+    API_SCR: http://10.2.3.216:30770
