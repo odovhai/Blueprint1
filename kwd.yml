@@ -85,8 +85,6 @@ dashboards:
         height: 500
         percentWidth: 33.33
       -
-        percentWidth: 33.33
-        height: 500
         config:
           baseUrl: api/v1
           dataPath: value
@@ -112,8 +110,10 @@ dashboards:
               itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Temperature
-          type: VerticalArrow
+          type: HorizontalArrow
           updateInterval: 0.5
+        height: 500
+        percentWidth: 33.33
       -
         config:
           baseUrl: api/v1
