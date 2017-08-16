@@ -8,10 +8,11 @@
       hover: router/hovered.svg
       selected: router/orange.svg
     widgets:
-      - config:
+      -
         source: EPList
         height: 500
         percentWidth: 100
+        config:
           title: Devices
           source: EPList
           applicationName: environment-ver-1
