@@ -33,9 +33,9 @@ dashboards:
             parameters:
               -
                 itemJsonPath: "widgetConfig.columns[0].display"
-                name: engine_id
+                name: endpoint_id
                 type: path
-            path: "/environment/{engine_id}"
+            path: "/environment/{endpoint_id}"
           metadata: metadata
           name: sensorDevices.json
           service: API_EPR
@@ -85,6 +85,8 @@ dashboards:
         height: 500
         percentWidth: 33.33
       -
+        percentWidth: 33.33
+        height: 500
         config:
           baseUrl: api/v1
           dataPath: value
@@ -110,10 +112,8 @@ dashboards:
               itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Temperature
-          type: HorizontalArrow
+          type: VerticalArrow
           updateInterval: 0.5
-        height: 500
-        percentWidth: 33.33
       -
         config:
           baseUrl: api/v1
