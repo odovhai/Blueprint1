@@ -3,16 +3,16 @@ applications:
   time-series:
   - name: Temperature
     value-field: temperature
-    tag-fields: temperature
+    tag-fields: stub
   - name: Humidity
     value-field: humidity
-    tag-fields: humidity
+    tag-fields: stub
   - name: BatteryLevel
     value-field: batteryLevel
-    tag-fields: batteryLevel
+    tag-fields: stub
   - name: Pressure
     value-field: pressure
-    tag-fields: pressure
+    tag-fields: stub
   versions:
   - name: environment-ver-1
     number: 1
@@ -23,6 +23,9 @@ applications:
     preprocessing:
       extraction:
         extract-all: true
+        fields: 
+        - name: stub
+          path : $.stub
 dcx:
  service:
    instance:
