@@ -1,40 +1,51 @@
- -
-    title: Environment
+---
+common:
+  autoUpdate: 3000
+dashboards:
+  -
+    description: "Engine description"
+    displayDescription: true
     displayTitle: true
-    path: /environment
-    isTopLevel: true
     icons:
       default: router/grey.svg
       hover: router/hovered.svg
       selected: router/orange.svg
+    isTopLevel: true
+    path: /engine
+    title: Engine
     widgets:
       -
-        source: EPList
-        height: 500
-        percentWidth: 100
         config:
-          title: Devices
-          source: EPList
-          applicationName: environment-ver-1
+          applicationName: engine-ver-1
           baseUrl: api/v1
           columns:
-            - display: ID
+            -
+              display: ID
               path: endpointId
-            - display: Created
+            -
+              display: Created
               path: createdDate
           displayTitle: true
+          generate: true
+          generateTimeout: 1000
+          generateTitle: "Generate new"
           height: 500
           itemLink:
             parameters:
-              - itemJsonPath: "widgetConfig.columns[0].display"
-                name: endpoint_id
+              -
+                itemJsonPath: "widgetConfig.columns[0].display"
+                name: engine_id
                 type: path
-            path: "/environment/{endpoint_id}"
+            path: "/engine/{engine_id}"
           metadata: metadata
           name: sensorDevices.json
           service: API_EPR
+          source: EPList
+          title: Devices
+        height: 500
+        percentWidth: 100
+        source: EPList
   -
-    title: Environment sensor
     displayDescription: true
     displayTitle: true
     icons:
@@ -42,10 +53,11 @@
       hover: router/hovered.svg
       selected: router/orange.svg
     isTopLevel: false
-    path: "/environment/:id"
+    path: "/engine/:id"
+    title: Engine
     widgets:
-      - config:
-          source: gauge
+      -
+        config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: rpm
@@ -62,17 +74,20 @@
             min: 0
             step: 500
           service: API_EPTS
+          source: gauge
           timeSegment: 5
           timeSeriesName: Revolutions
           timeSeriesParams:
-            - itemJsonPath: dashboardRouteParams.id
+            -
+              itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Revolution
           type: RadialModernBorder270
           updateInterval: 0.5
         height: 500
         percentWidth: 33.33
-      - config:
+      -
+        config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: °C
@@ -93,14 +108,16 @@
           timeSegment: 5
           timeSeriesName: Temperature
           timeSeriesParams:
-            - itemJsonPath: dashboardRouteParams.id
+            -
+              itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Temperature
           type: HorizontalArrow
           updateInterval: 0.5
         height: 500
         percentWidth: 33.33
-      - config:
+      -
+        config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: bar
@@ -175,10 +192,10 @@
         percentWidth: 100
         source: numericChart
       - height: 500
-        percentWidth: 40
+        percentWidth: 60
         source: metadata
         config:
-          title: Metadata
+          title: Rules
           source: metadata
           service: API_EPR
           baseUrl: api/v1
@@ -187,33 +204,11 @@
           allFields: true
           allEditable: true
           fields:
-            - path: createdDate
-              name: createdDate
-              displayName: Created at
-              isEditable: false
-              dataType: string
-            - path: endpointId
-              name: endpointId
-              displayName: Endpoint ID
-              isEditable: false
-              dataType: string
             - path: metadata
               section: metadata
+              regexName: .*
               displayName: Rule name
-              name: value
-              isEditable: true
-              dataType: string
-            - path: metadata
-              section: metadata
-              displayName: Operator
-              name: operator
-              isEditable: true
-              dataType: string
-            - path: metadata
-              section: metadata
-              displayName: Threshold
-              name: threshold
-              isEditable: true
+              isEditable: false
               dataType: string
 info:
   logo: "http://some_path"
