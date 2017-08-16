@@ -92,13 +92,12 @@ dashboards:
           displayScale: 1
           displayTitle: true
           emptyQueriesMax: 0
-          name: sensorDetailsGaugeHorizontalArrow.json
           ranges:
-            highCritical: 120
-            highWarning: 115
-            lowCritical: 0
-            lowWarning: 0
-            max: 200
+            highCritical: 40
+            highWarning: 30
+            lowCritical: 7
+            lowWarning: 15
+            max: 50
             min: 0
             step: 20
           service: API_EPTS
