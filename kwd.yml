@@ -1,8 +1,4 @@
----
-common:
-  autoUpdate: 3000
-dashboards:
-  -
+ -
     title: Environment
     displayTitle: true
     path: /environment
@@ -99,7 +95,7 @@ dashboards:
             - itemJsonPath: dashboardRouteParams.id
               name: epId
           title: Temperature
-          type: VerticalArrow
+          type: HorizontalArrow
           updateInterval: 0.5
         height: 500
         percentWidth: 33.33
