@@ -99,7 +99,7 @@ dashboards:
             lowWarning: 15
             max: 50
             min: 0
-            step: 20
+            step: 5
           service: API_EPTS
           source: gauge
           timeSegment: 5
