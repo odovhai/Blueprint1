@@ -2,7 +2,7 @@
 common:
   autoUpdate: 3000
 dashboards:
-  - 
+  -
     title: Environment
     displayTitle: true
     path: /environment
@@ -12,186 +12,212 @@ dashboards:
       hover: router/hovered.svg
       selected: router/orange.svg
     widgets:
-      -
+      - config:
+        source: EPList
         height: 500
         percentWidth: 100
-        config:
           title: Devices
-          displayTitle: true
           source: EPList
-          service: API_EPR
-          baseUrl: api/v1
           applicationName: environment-ver-1
-          metadata: metadata
+          baseUrl: api/v1
           columns:
             - display: ID
               path: endpointId
             - display: Created
               path: createdDate
+          displayTitle: true
+          height: 500
           itemLink:
             parameters:
               - itemJsonPath: "widgetConfig.columns[0].display"
                 name: endpoint_id
                 type: path
             path: "/environment/{endpoint_id}"
+          metadata: metadata
+          name: sensorDevices.json
+          service: API_EPR
   -
     title: Environment sensor
+    displayDescription: true
     displayTitle: true
-    path: "/environment/:id"
-    isTopLevel: false
     icons:
       default: router/grey.svg
       hover: router/hovered.svg
       selected: router/orange.svg
+    isTopLevel: false
+    path: "/environment/:id"
     widgets:
-      -
-        height: 500
-        percentWidth: 25
-        config:
-          title: Temperature
-          displayTitle: true
+      - config:
           source: gauge
-          service: API_EPTS
-          timeSeriesName: Temperature
-          dataPath: value
           baseUrl: api/v1
+          dataPath: value
+          displayPostfix: rpm
+          displayScale: 0
+          displayTitle: true
+          emptyQueriesMax: 3
+          name: sensorDetailsGaugeRadialModern270.json
+          ranges:
+            highCritical: 3100
+            highWarning: 3050
+            lowCritical: 2850
+            lowWarning: 2950
+            max: 3500
+            min: 0
+            step: 500
+          service: API_EPTS
+          timeSegment: 5
+          timeSeriesName: Revolutions
           timeSeriesParams:
             - itemJsonPath: dashboardRouteParams.id
               name: epId
-          displayPostfix: "°C"
+          title: Revolution
+          type: RadialModernBorder270
+          updateInterval: 0.5
+        height: 500
+        percentWidth: 33.33
+      - config:
+          baseUrl: api/v1
+          dataPath: value
+          displayPostfix: °C
           displayScale: 1
-          emptyQueriesMax: 3
+          displayTitle: true
+          emptyQueriesMax: 0
+          name: sensorDetailsGaugeHorizontalArrow.json
           ranges:
-            highCritical: 40
-            highWarning: 30
-            lowCritical: 7
-            lowWarning: 15
-            max: 50
+            highCritical: 120
+            highWarning: 115
+            lowCritical: 0
+            lowWarning: 0
+            max: 200
             min: 0
             step: 20
-          timeSegment: 5
-          type: VerticalArrow
-          updateInterval: 0.5
-      -
-        height: 500
-        percentWidth: 25
-        config:
-          title: Humidity
-          displayTitle: true
-          source: gauge
-          baseUrl: api/v1
-          dataPath: value
-          displayPostfix: "%"
-          displayScale: 1
-          emptyQueriesMax: 3
-          ranges:
-            highCritical: 90
-            highWarning: 65
-            lowCritical: 10
-            lowWarning: 35
-            max: 100
-            min: 0
-            step: 5
           service: API_EPTS
+          source: gauge
           timeSegment: 5
-          timeSeriesName: Humidity
+          timeSeriesName: Temperature
           timeSeriesParams:
             - itemJsonPath: dashboardRouteParams.id
               name: epId
+          title: Temperature
           type: VerticalArrow
           updateInterval: 0.5
-      -
         height: 500
-        percentWidth: 25
-        config:
-          title: "Battery Level"
-          displayTitle: true
-          source: gauge
-          baseUrl: api/v1
-          dataPath: value
-          displayPostfix: "%"
-          displayScale: 2
-          emptyQueriesMax: 3
-          ranges:
-            lowCritical: 5
-            lowWarning: 20
-            max: 100
-            min: 0
-            step: 10
-          service: API_EPTS
-          timeSegment: 5
-          timeSeriesName: BatteryLevel
-          timeSeriesParams:
-            -
-              itemJsonPath: dashboardRouteParams.id
-              name: epId
-          type: VerticalArrow
-          updateInterval: 0.5
-      -
-        height: 500
-        percentWidth: 25
-        config:
-          title: Pressure
-          displayTitle: true
-          source: gauge
+        percentWidth: 33.33
+      - config:
           baseUrl: api/v1
           dataPath: value
           displayPostfix: bar
-          displayScale: 3
+          displayScale: 2
+          displayTitle: true
           emptyQueriesMax: 3
+          name: sensorDetailsGaugeRadialModern180Left.json
           ranges:
-            highCritical: 1.06
-            highWarning: 1.05
-            lowCritical: 0.9
-            lowWarning: 0.95
-            max: 1.1
-            min: 0.85
-            step: 0.05
+            highCritical: 6.3
+            highWarning: 6.1
+            lowCritical: 2
+            lowWarning: 4
+            max: 8
+            min: 0
+            step: 1
           service: API_EPTS
+          source: gauge
           timeSegment: 5
-          timeSeriesName: Pressure
+          timeSeriesName: Oil
           timeSeriesParams:
             -
               itemJsonPath: dashboardRouteParams.id
               name: epId
-          type: VerticalArrow
+          title: Oil
+          type: RadialModern180Left
           updateInterval: 0.5
-      -
         height: 500
-        percentWidth: 100
+        percentWidth: 33.33
+      -
         config:
-          title: "Revolutions, rpm"
-          displayTitle: true
-          source: numericChart
           baseUrl: api/v1
           dataPath: value
+          displayTitle: true
+          height: 500
           limit: 1000
+          name: sensorDetailsNumericTemperature.json
           service: API_EPTS
+          source: numericChart
           timeSeriesName: Revolutions
-      -
+          title: "Revolutions, rpm"
         height: 500
         percentWidth: 100
+        source: numericChart
+      -
         config:
-          title: "Temperature, °C"
-          displayTitle: true
-          source: numericChart
           baseUrl: api/v1
           dataPath: value
+          displayTitle: true
+          height: 500
           limit: 1000
+          name: sensorDetailsNumericTemperature.json
           service: API_EPTS
+          source: numericChart
           timeSeriesName: Temperature
-      -
+          title: "Temperature, °C"
         height: 500
         percentWidth: 100
+        source: numericChart
+      -
         config:
-          title: "Oil, bar"
-          displayTitle: true
-          source: numericChart
           baseUrl: api/v1
           dataPath: value
+          displayTitle: true
+          height: 500
           limit: 1000
+          name: sensorDetailsNumericTemperature.json
           service: API_EPTS
+          source: numericChart
           timeSeriesName: Oil
+          title: "Oil, bar"
+        height: 500
+        percentWidth: 100
+        source: numericChart
+      - height: 500
+        percentWidth: 40
+        source: metadata
+        config:
+          title: Metadata
+          source: metadata
+          service: API_EPR
+          baseUrl: api/v1
+          height: 500
+          name: routerDetailsMetadata.json
+          allFields: true
+          allEditable: true
+          fields:
+            - path: createdDate
+              name: createdDate
+              displayName: Created at
+              isEditable: false
+              dataType: string
+            - path: endpointId
+              name: endpointId
+              displayName: Endpoint ID
+              isEditable: false
+              dataType: string
+            - path: metadata
+              section: metadata
+              displayName: Rule name
+              name: value
+              isEditable: true
+              dataType: string
+            - path: metadata
+              section: metadata
+              displayName: Operator
+              name: operator
+              isEditable: true
+              dataType: string
+            - path: metadata
+              section: metadata
+              displayName: Threshold
+              name: threshold
+              isEditable: true
+              dataType: string
 info:
   logo: "http://some_path"
   theme: night
